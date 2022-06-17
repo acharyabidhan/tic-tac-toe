@@ -2,6 +2,7 @@
 #required to make this project.
 #Tkinter is the GUI library for this game
 from tkinter import*
+from tkinter import messagebox
 #Threading is used to run some background threads,
 #Here I've used this to make delay in computer's turn.
 from threading import Thread
@@ -365,6 +366,7 @@ def resetGame():
     gridnine.config(text="", background="white")
     turnLabel.config(text="", foreground="blue")
     nowTurn = otherChar
+    gameframe.config(background=bgColor)
     disableAll()
 ############################################################################
 ############################################################################
@@ -491,6 +493,19 @@ def whoseTurnFirst():
     return random.choice(players)
 ############################################################################
 ############################################################################
+def changeColors():
+    while playing:
+        red = random.randint(0, 100)
+        green = random.randint(0, 100)
+        blue = random.randint(0, 100)
+        rgb = (red, green, blue)
+        color = "#%02x%02x%02x" % rgb
+        gameframe.config(background=color)
+        sleep(0.1)
+def changeColorThread():
+    Thread(target=changeColors).start()
+############################################################################
+############################################################################
 def startGame():
     global playing, nowTurn
     playing = True
@@ -530,48 +545,56 @@ def checkResults():
         turnLabel.config(text="X WON", foreground=getColor()[0])
         noWinner = False
         saveScore("X")
+        changeColorThread()
     if grideight["text"]=="X" and gridfive["text"]=="X" and gridtwo["text"]=="X":
         grideight.config(background=getColor()[0]);gridfive.config(background=getColor()[0]);gridtwo.config(background=getColor()[0])
         disableAll()
         turnLabel.config(text="X WON", foreground=getColor()[0])
         noWinner = False
         saveScore("X")
+        changeColorThread()
     if gridnine["text"]=="X" and gridsix["text"]=="X" and gridthree["text"]=="X":
         gridnine.config(background=getColor()[0]);gridsix.config(background=getColor()[0]);gridthree.config(background=getColor()[0])
         disableAll()
         turnLabel.config(text="X WON", foreground=getColor()[0])
         noWinner = False
         saveScore("X")
+        changeColorThread()
     if gridone["text"]=="X" and gridtwo["text"]=="X" and gridthree["text"]=="X":
         gridone.config(background=getColor()[0]);gridtwo.config(background=getColor()[0]);gridthree.config(background=getColor()[0])
         disableAll()
         turnLabel.config(text="X WON", foreground=getColor()[0])
         noWinner = False
         saveScore("X")
+        changeColorThread()
     if gridfour["text"]=="X" and gridfive["text"]=="X" and gridsix["text"]=="X":
         gridfour.config(background=getColor()[0]);gridfive.config(background=getColor()[0]);gridsix.config(background=getColor()[0])
         disableAll()
         turnLabel.config(text="X WON", foreground=getColor()[0])
         noWinner = False
         saveScore("X")
+        changeColorThread()
     if gridseven["text"]=="X" and grideight["text"]=="X" and gridnine["text"]=="X":
         gridseven.config(background=getColor()[0]);grideight.config(background=getColor()[0]);gridnine.config(background=getColor()[0])
         disableAll()
         turnLabel.config(text="X WON", foreground=getColor()[0])
         noWinner = False
         saveScore("X")
+        changeColorThread()
     if gridone["text"]=="X" and gridfive["text"]=="X" and gridnine["text"]=="X":
         gridone.config(background=getColor()[0]);gridfive.config(background=getColor()[0]);gridnine.config(background=getColor()[0])
         disableAll()
         turnLabel.config(text="X WON", foreground=getColor()[0])
         noWinner = False
         saveScore("X")
+        changeColorThread()
     if gridseven["text"]=="X" and gridfive["text"]=="X" and gridthree["text"]=="X":
         gridseven.config(background=getColor()[0]);gridfive.config(background=getColor()[0]);gridthree.config(background=getColor()[0])
         disableAll()
         turnLabel.config(text="X WON", foreground=getColor()[0])
         noWinner = False
         saveScore("X")
+        changeColorThread()
     ############################For O###########################################
     if gridseven["text"]=="O" and gridfour["text"]=="O" and gridone["text"]=="O":
         gridseven.config(background=getColor()[1]);gridfour.config(background=getColor()[1]);gridone.config(background=getColor()[1])
@@ -579,48 +602,56 @@ def checkResults():
         turnLabel.config(text="O WON", foreground=getColor()[1])
         noWinner = False
         saveScore("O")
+        changeColorThread()
     if grideight["text"]=="O" and gridfive["text"]=="O" and gridtwo["text"]=="O":
         grideight.config(background=getColor()[1]);gridfive.config(background=getColor()[1]);gridtwo.config(background=getColor()[1])
         disableAll()
         turnLabel.config(text="O WON", foreground=getColor()[1])
         noWinner = False
         saveScore("O")
+        changeColorThread()
     if gridnine["text"]=="O" and gridsix["text"]=="O" and gridthree["text"]=="O":
         gridnine.config(background=getColor()[1]);gridsix.config(background=getColor()[1]);gridthree.config(background=getColor()[1])
         disableAll()
         turnLabel.config(text="O WON", foreground=getColor()[1])
         noWinner = False
         saveScore("O")
+        changeColorThread()
     if gridone["text"]=="O" and gridtwo["text"]=="O" and gridthree["text"]=="O":
         gridone.config(background=getColor()[1]);gridtwo.config(background=getColor()[1]);gridthree.config(background=getColor()[1])
         disableAll()
         turnLabel.config(text="O WON", foreground=getColor()[1])
         noWinner = False
         saveScore("O")
+        changeColorThread()
     if gridfour["text"]=="O" and gridfive["text"]=="O" and gridsix["text"]=="O":
         gridfour.config(background=getColor()[1]);gridfive.config(background=getColor()[1]);gridsix.config(background=getColor()[1])
         disableAll()
         turnLabel.config(text="O WON", foreground=getColor()[1])
         noWinner = False
         saveScore("O")
+        changeColorThread()
     if gridseven["text"]=="O" and grideight["text"]=="O" and gridnine["text"]=="O":
         gridseven.config(background=getColor()[1]);grideight.config(background=getColor()[1]);gridnine.config(background=getColor()[1])
         disableAll()
         turnLabel.config(text="O WON", foreground=getColor()[1])
         noWinner = False
         saveScore("O")
+        changeColorThread()
     if gridone["text"]=="O" and gridfive["text"]=="O" and gridnine["text"]=="O":
         gridone.config(background=getColor()[1]);gridfive.config(background=getColor()[1]);gridnine.config(background=getColor()[1])
         disableAll()
         turnLabel.config(text="O WON", foreground=getColor()[1])
         noWinner = False
         saveScore("O")
+        changeColorThread()
     if gridseven["text"]=="O" and gridfive["text"]=="O" and gridthree["text"]=="O":
         gridseven.config(background=getColor()[1]);gridfive.config(background=getColor()[1]);gridthree.config(background=getColor()[1])
         disableAll()
         turnLabel.config(text="O WON", foreground=getColor()[1])
         noWinner = False
         saveScore("O")
+        changeColorThread()
     if gridCount == 9 and noWinner:
         noWinner = False
         turnLabel.config(text="Tie", foreground="yellow")
@@ -630,17 +661,17 @@ controlsframe = LabelFrame(root, background=bgColor, bd=0)
 controlsframe.place(x=0,y=0,height=window_height,width=window_width/2-100)
 ############################################################################
 ############################################################################
-playerName = Label(controlsframe, font=("times",18), text=f"Hi {username}!", bd=0, background=bgColor, foreground="white")
+playerName = Label(controlsframe, font=("arial",16), text=f"Hi {username}!", bd=0, background=bgColor, foreground="white")
 playerName.place(relx=0.50, rely=0.01, anchor=N)
-scoreLabel = Label(controlsframe, font=("times",15), text="Score Board", bd=0, background=bgColor, foreground="white")
+scoreLabel = Label(controlsframe, font=("arial",14), text="Score Board", bd=0, background=bgColor, foreground="cyan")
 scoreLabel.place(relx=0.50, rely=0.10, anchor=N)
-winsGame = Label(controlsframe, font=("times",15), text=f"Victory: {noOfVictory}", bd=0, background=bgColor, foreground="white")
+winsGame = Label(controlsframe, font=("arial",14), text=f"Victory: {noOfVictory}", bd=0, background=bgColor, foreground="green")
 winsGame.place(relx=0.15, rely=0.15, anchor=NW)
-loseGame = Label(controlsframe, font=("times",15), text=f"Looses: {noOfLooses}", bd=0, background=bgColor, foreground="white")
+loseGame = Label(controlsframe, font=("arial",14), text=f"Looses: {noOfLooses}", bd=0, background=bgColor, foreground="red")
 loseGame.place(relx=0.85, rely=0.15, anchor=NE)
 ############################################################################
 ############################################################################
-syChar = Label(controlsframe, font=("times",15), text="Select your character.", bd=0, background=bgColor, foreground="white")
+syChar = Label(controlsframe, font=("arial",14), text="Select your character.", bd=0, background=bgColor, foreground="cyan")
 syChar.place(relx=0.50, rely=0.22, anchor=N)
 xCheckBtn = Checkbutton(controlsframe, bd=0, text="X", font=("arial",12),variable=characterX,command=selectXchar, width=5, state=DISABLED)
 xCheckBtn.place(relx=0.45, rely=0.27, anchor=NE)
@@ -648,7 +679,7 @@ oCheckBtn = Checkbutton(controlsframe, bd=0, text="O", font=("arial",12),variabl
 oCheckBtn.place(relx=0.55, rely=0.27, anchor=NW)
 ############################################################################
 ############################################################################
-playWith = Label(controlsframe, font=("times",15), text="Select your opponent.", bd=0, background=bgColor, foreground="white")
+playWith = Label(controlsframe, font=("arial",14), text="Select your opponent.", bd=0, background=bgColor, foreground="cyan")
 playWith.place(relx=0.50, rely=0.35, anchor=N)
 computer = Checkbutton(controlsframe, state=DISABLED,variable=sComputer,bd=0, text="Computer", font=("arial",12),command=selectComputer, width=10)
 computer.place(relx=0.10, rely=0.40, anchor=NW)
@@ -656,21 +687,21 @@ friend = Checkbutton(controlsframe, variable=sFriend, bd=0, text="Friend", font=
 friend.place(relx=0.90, rely=0.40, anchor=NE)
 ############################################################################
 ############################################################################
-frendLabel = Label(controlsframe, text="Playing with: Computer", bd=0, background=bgColor, foreground="white",font=("times",15))
+frendLabel = Label(controlsframe, text="Playing with: Computer", bd=0, background=bgColor, foreground="cyan",font=("arial",14))
 frendLabel.place(relx=0.50, rely=0.54, anchor=S)
 ############################################################################
 ############################################################################
-youLabel = Label(controlsframe, text="You: X", bd=0, background=bgColor, foreground="white",font=("times",15))
-youLabel.place(relx=0.20, rely=0.60, anchor=SW)
-frLabel = Label(controlsframe, text="Computer: O", bd=0, background=bgColor, foreground="white",font=("times",15))
-frLabel.place(relx=0.80, rely=0.60, anchor=SE)
+youLabel = Label(controlsframe, text="You: X", bd=0, background=bgColor, foreground="white",font=("arial",14))
+youLabel.place(relx=0.15, rely=0.60, anchor=SW)
+frLabel = Label(controlsframe, text="Computer: O", bd=0, background=bgColor, foreground="white",font=("arial",14))
+frLabel.place(relx=0.85, rely=0.60, anchor=SE)
 ############################################################################
 ############################################################################
-startBtn = Button(controlsframe, text="Start Game", width=15, font=("times", 12), command=startGame)
+startBtn = Button(controlsframe, text="Start Game", width=15, font=("arial", 12), command=startGame, background="green", activebackground="green", foreground="white", activeforeground="yellow")
 startBtn.place(relx=0.50, rely=0.70, anchor=S)
 ############################################################################
 ############################################################################
-turnLabel = Label(controlsframe, text="", bd=0, background=bgColor, foreground="blue",font=("times",45))
+turnLabel = Label(controlsframe, text="", bd=0, background=bgColor, foreground="blue",font=("arial",45))
 turnLabel.place(relx=0.50, rely=0.90, anchor=S)
 ############################################################################
 ############################################################################
@@ -733,7 +764,15 @@ def detectKeypress(e):
 root.bind('<KeyRelease>', detectKeypress)
 ############################################################################
 ############################################################################
-def nothing():root.destroy()
+def nothing():
+    global playing
+    playing = False
+    root.destroy()
+gameTip = f"Hello {username}!\n\nThank you for downloading our game.\n\n\nHere is how you can enjoy this game.\nFirst, Choose your favourite character.\nDefault will be 'X'.\nSecond, Choose your opponent.\nYou can play with your virtual friend (AI) or with your real friend.\nWhile playing with computer, you can use mouse or keyboard to choose grids.\nKeyboard's numberpad (right side of keyboard) is used to choose grids.\nNote: pressing 1 will choose the third row first column and so on...\n\nYour score is saved on device.\n\nWhile playing with friend, One of you will use either mouse or keyboard to play.\n\n\nDo you want to Show this Game tip everytime you open this game?"
+if os.path.isfile(f"C:\\Users\\{username}\\tttgametip"):pass
+else:
+    if messagebox.askyesno("Game Tip", gameTip):pass
+    else:open(f"C:\\Users\\{username}\\tttgametip", "w")
 ############################################################################
 ############################################################################
 root.protocol('WM_DELETE_WINDOW', nothing)
