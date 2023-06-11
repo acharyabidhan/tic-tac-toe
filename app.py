@@ -489,21 +489,8 @@ def computersTurn():
 ############################################################################
 ############################################################################
 def whoseTurnFirst():
-    players = ["X","X","X","O","O","O","X","O","X","O","X","O","X","O","X","O"]
+    players = ["X","O"]
     return random.choice(players)
-############################################################################
-############################################################################
-def changeColors():
-    while playing:
-        red = random.randint(0, 100)
-        green = random.randint(0, 100)
-        blue = random.randint(0, 100)
-        rgb = (red, green, blue)
-        color = "#%02x%02x%02x" % rgb
-        gameframe.config(background=color)
-        sleep(0.1)
-def changeColorThread():
-    Thread(target=changeColors).start()
 ############################################################################
 ############################################################################
 def startGame():
@@ -516,11 +503,13 @@ def startGame():
     else:computer.config(state=DISABLED)
     alertLabel.config(text="")
     if sComputer.get() == 1:
+        disableAll()
         nowTurn = random.choice(["X","O"])
         turnLabel.config(text=f"{nowTurn}'s Turn")
         if nowTurn == otherChar:
             Thread(target=computersTurn).start()
-        enableAll()
+        else:
+            enableAll()
     else:
         enableAll()
         turnLabel.config(text=f"{otherChar}'s Turn")
@@ -545,56 +534,48 @@ def checkResults():
         turnLabel.config(text="X WON", foreground=getColor()[0])
         noWinner = False
         saveScore("X")
-        changeColorThread()
     if grideight["text"]=="X" and gridfive["text"]=="X" and gridtwo["text"]=="X":
         grideight.config(background=getColor()[0]);gridfive.config(background=getColor()[0]);gridtwo.config(background=getColor()[0])
         disableAll()
         turnLabel.config(text="X WON", foreground=getColor()[0])
         noWinner = False
         saveScore("X")
-        changeColorThread()
     if gridnine["text"]=="X" and gridsix["text"]=="X" and gridthree["text"]=="X":
         gridnine.config(background=getColor()[0]);gridsix.config(background=getColor()[0]);gridthree.config(background=getColor()[0])
         disableAll()
         turnLabel.config(text="X WON", foreground=getColor()[0])
         noWinner = False
         saveScore("X")
-        changeColorThread()
     if gridone["text"]=="X" and gridtwo["text"]=="X" and gridthree["text"]=="X":
         gridone.config(background=getColor()[0]);gridtwo.config(background=getColor()[0]);gridthree.config(background=getColor()[0])
         disableAll()
         turnLabel.config(text="X WON", foreground=getColor()[0])
         noWinner = False
         saveScore("X")
-        changeColorThread()
     if gridfour["text"]=="X" and gridfive["text"]=="X" and gridsix["text"]=="X":
         gridfour.config(background=getColor()[0]);gridfive.config(background=getColor()[0]);gridsix.config(background=getColor()[0])
         disableAll()
         turnLabel.config(text="X WON", foreground=getColor()[0])
         noWinner = False
         saveScore("X")
-        changeColorThread()
     if gridseven["text"]=="X" and grideight["text"]=="X" and gridnine["text"]=="X":
         gridseven.config(background=getColor()[0]);grideight.config(background=getColor()[0]);gridnine.config(background=getColor()[0])
         disableAll()
         turnLabel.config(text="X WON", foreground=getColor()[0])
         noWinner = False
         saveScore("X")
-        changeColorThread()
     if gridone["text"]=="X" and gridfive["text"]=="X" and gridnine["text"]=="X":
         gridone.config(background=getColor()[0]);gridfive.config(background=getColor()[0]);gridnine.config(background=getColor()[0])
         disableAll()
         turnLabel.config(text="X WON", foreground=getColor()[0])
         noWinner = False
         saveScore("X")
-        changeColorThread()
     if gridseven["text"]=="X" and gridfive["text"]=="X" and gridthree["text"]=="X":
         gridseven.config(background=getColor()[0]);gridfive.config(background=getColor()[0]);gridthree.config(background=getColor()[0])
         disableAll()
         turnLabel.config(text="X WON", foreground=getColor()[0])
         noWinner = False
         saveScore("X")
-        changeColorThread()
     ############################For O###########################################
     if gridseven["text"]=="O" and gridfour["text"]=="O" and gridone["text"]=="O":
         gridseven.config(background=getColor()[1]);gridfour.config(background=getColor()[1]);gridone.config(background=getColor()[1])
@@ -602,59 +583,51 @@ def checkResults():
         turnLabel.config(text="O WON", foreground=getColor()[1])
         noWinner = False
         saveScore("O")
-        changeColorThread()
     if grideight["text"]=="O" and gridfive["text"]=="O" and gridtwo["text"]=="O":
         grideight.config(background=getColor()[1]);gridfive.config(background=getColor()[1]);gridtwo.config(background=getColor()[1])
         disableAll()
         turnLabel.config(text="O WON", foreground=getColor()[1])
         noWinner = False
         saveScore("O")
-        changeColorThread()
     if gridnine["text"]=="O" and gridsix["text"]=="O" and gridthree["text"]=="O":
         gridnine.config(background=getColor()[1]);gridsix.config(background=getColor()[1]);gridthree.config(background=getColor()[1])
         disableAll()
         turnLabel.config(text="O WON", foreground=getColor()[1])
         noWinner = False
         saveScore("O")
-        changeColorThread()
     if gridone["text"]=="O" and gridtwo["text"]=="O" and gridthree["text"]=="O":
         gridone.config(background=getColor()[1]);gridtwo.config(background=getColor()[1]);gridthree.config(background=getColor()[1])
         disableAll()
         turnLabel.config(text="O WON", foreground=getColor()[1])
         noWinner = False
         saveScore("O")
-        changeColorThread()
     if gridfour["text"]=="O" and gridfive["text"]=="O" and gridsix["text"]=="O":
         gridfour.config(background=getColor()[1]);gridfive.config(background=getColor()[1]);gridsix.config(background=getColor()[1])
         disableAll()
         turnLabel.config(text="O WON", foreground=getColor()[1])
         noWinner = False
         saveScore("O")
-        changeColorThread()
     if gridseven["text"]=="O" and grideight["text"]=="O" and gridnine["text"]=="O":
         gridseven.config(background=getColor()[1]);grideight.config(background=getColor()[1]);gridnine.config(background=getColor()[1])
         disableAll()
         turnLabel.config(text="O WON", foreground=getColor()[1])
         noWinner = False
         saveScore("O")
-        changeColorThread()
     if gridone["text"]=="O" and gridfive["text"]=="O" and gridnine["text"]=="O":
         gridone.config(background=getColor()[1]);gridfive.config(background=getColor()[1]);gridnine.config(background=getColor()[1])
         disableAll()
         turnLabel.config(text="O WON", foreground=getColor()[1])
         noWinner = False
         saveScore("O")
-        changeColorThread()
     if gridseven["text"]=="O" and gridfive["text"]=="O" and gridthree["text"]=="O":
         gridseven.config(background=getColor()[1]);gridfive.config(background=getColor()[1]);gridthree.config(background=getColor()[1])
         disableAll()
         turnLabel.config(text="O WON", foreground=getColor()[1])
         noWinner = False
         saveScore("O")
-        changeColorThread()
     if gridCount == 9 and noWinner:
         noWinner = False
-        turnLabel.config(text="Tie", foreground="yellow")
+        turnLabel.config(text="Draw", foreground="yellow")
 ############################################################################
 ############################################################################
 controlsframe = LabelFrame(root, background=bgColor, bd=0)
@@ -671,7 +644,7 @@ loseGame = Label(controlsframe, font=("arial",14), text=f"Looses: {noOfLooses}",
 loseGame.place(relx=0.85, rely=0.15, anchor=NE)
 ############################################################################
 ############################################################################
-syChar = Label(controlsframe, font=("arial",14), text="Select your character.", bd=0, background=bgColor, foreground="cyan")
+syChar = Label(controlsframe, font=("arial",14), text="Choose your character.", bd=0, background=bgColor, foreground="cyan")
 syChar.place(relx=0.50, rely=0.22, anchor=N)
 xCheckBtn = Checkbutton(controlsframe, bd=0, text="X", font=("arial",12),variable=characterX,command=selectXchar, width=5, state=DISABLED)
 xCheckBtn.place(relx=0.45, rely=0.27, anchor=NE)
@@ -679,7 +652,7 @@ oCheckBtn = Checkbutton(controlsframe, bd=0, text="O", font=("arial",12),variabl
 oCheckBtn.place(relx=0.55, rely=0.27, anchor=NW)
 ############################################################################
 ############################################################################
-playWith = Label(controlsframe, font=("arial",14), text="Select your opponent.", bd=0, background=bgColor, foreground="cyan")
+playWith = Label(controlsframe, font=("arial",14), text="Choose your opponent.", bd=0, background=bgColor, foreground="cyan")
 playWith.place(relx=0.50, rely=0.35, anchor=N)
 computer = Checkbutton(controlsframe, state=DISABLED,variable=sComputer,bd=0, text="Computer", font=("arial",12),command=selectComputer, width=10)
 computer.place(relx=0.10, rely=0.40, anchor=NW)
@@ -781,5 +754,4 @@ root.mainloop()
 #This much:)
 #Started this project on June 4, 2022
 #Completed on June 6, 2022
-#Updated on June 10, 2022
 #Made with ❤ by Bidhan Acharya
